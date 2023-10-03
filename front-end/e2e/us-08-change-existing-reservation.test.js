@@ -159,30 +159,16 @@ describe("US-08 - Change an existing reservation - E2E", () => {
         fullPage: true,
       });
 
-      // await Promise.all([
-      //   cancelButton.click(),
-      //   page.waitForNavigation({waitUntil: "networkidle2"}),
-      // ]);
-
-      //add dialog, didn't have this part, but necessary
-      page.on("dialog", async (dialog) => {
-        console.log("******************, dialog window popped");
-        expect(dialog.message()).toContain(
-          "Do you want to cancel this reservation?"
-        );
-        await dialog.accept();
-        console.log("################,accepted the confirmation");
-      });
-      await cancelButton.click();
-      console.log("^^^^^^^^^cancel button clicked");
-      await page.reload({waitUntil: "networkidle2"});
-      //to here
+      await Promise.all([
+        cancelButton.click(),
+        page.waitForNavigation({waitUntil: "networkidle2"}),
+      ]);
 
       await page.screenshot({
         path: ".screenshots/us-08-edit-reservation-cancel-after.png",
         fullPage: true,
       });
-
+      console.log(page.url(), "***********");
       expect(page.url()).toContain("/dashboard");
     });
 

@@ -1,5 +1,5 @@
 const puppeteer = require("puppeteer");
-const { setDefaultOptions } = require('expect-puppeteer');
+const {setDefaultOptions} = require("expect-puppeteer");
 const fs = require("fs");
 const fsPromises = fs.promises;
 
@@ -15,19 +15,17 @@ describe("US-03 - Create reservation on a future, working date - E2E", () => {
   let browser;
 
   beforeAll(async () => {
-    await fsPromises.mkdir("./.screenshots", { recursive: true });
+    await fsPromises.mkdir("./.screenshots", {recursive: true});
 
-   
-    setDefaultOptions({ timeout: 1000 });
+    setDefaultOptions({timeout: 1000});
   });
 
   beforeEach(async () => {
     browser = await puppeteer.launch();
     page = await browser.newPage();
     page.on("console", onPageConsole);
-    await page.setViewport({ width: 1920, height: 1080 });
-    await page.goto(`${baseURL}/reservations/new`, { waitUntil: "load" });
-    
+    await page.setViewport({width: 1920, height: 1080});
+    await page.goto(`${baseURL}/reservations/new`, {waitUntil: "load"});
   });
 
   afterEach(async () => {
@@ -36,7 +34,6 @@ describe("US-03 - Create reservation on a future, working date - E2E", () => {
 
   describe("/reservations/new page", () => {
     beforeEach(async () => {
-     
       await page.type("input[name=first_name]", "John");
       await page.type("input[name=last_name]", "Doe");
       await page.type("input[name=mobile_number]", "1234567890");
@@ -48,13 +45,13 @@ describe("US-03 - Create reservation on a future, working date - E2E", () => {
       await page.type("input[name=reservation_time]", "10:15AM");
 
       await page.screenshot({
-        path: ".screenshots/us-02-reservation-too-early-before.png",
+        path: ".screenshots/us-03-reservation-too-early-before.png",
       });
       expect(await page.$(".alert-danger")).toBeFalsy();
       await page.click("button[type=submit]");
 
       await page.screenshot({
-        path: ".screenshots/us-02-reservation-too-early-after.png",
+        path: ".screenshots/us-03-reservation-too-early-after.png",
       });
 
       expect(await page.$(".alert-danger")).toBeTruthy();
@@ -65,7 +62,7 @@ describe("US-03 - Create reservation on a future, working date - E2E", () => {
       await page.type("input[name=reservation_time]", "1005PM");
 
       await page.screenshot({
-        path: ".screenshots/us-02-reservation-almost-closing-before.png",
+        path: ".screenshots/us-03-reservation-almost-closing-before.png",
       });
 
       expect(await page.$(".alert-danger")).toBeFalsy();
@@ -73,7 +70,7 @@ describe("US-03 - Create reservation on a future, working date - E2E", () => {
       await page.click("button[type=submit]");
 
       await page.screenshot({
-        path: ".screenshots/us-02-reservation-almost-closing-after.png",
+        path: ".screenshots/us-03-reservation-almost-closing-after.png",
       });
 
       expect(await page.$(".alert-danger")).toBeTruthy();
@@ -84,7 +81,7 @@ describe("US-03 - Create reservation on a future, working date - E2E", () => {
       await page.type("input[name=reservation_time]", "1045PM");
 
       await page.screenshot({
-        path: ".screenshots/us-02-reservation-too-late-before.png",
+        path: ".screenshots/us-03-reservation-too-late-before.png",
       });
 
       expect(await page.$(".alert-danger")).toBeFalsy();
@@ -92,7 +89,7 @@ describe("US-03 - Create reservation on a future, working date - E2E", () => {
       await page.click("button[type=submit]");
 
       await page.screenshot({
-        path: ".screenshots/us-02-reservation-too-late-after.png",
+        path: ".screenshots/us-03-reservation-too-late-after.png",
       });
 
       expect(await page.$(".alert-danger")).toBeTruthy();
