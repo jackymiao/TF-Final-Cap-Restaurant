@@ -1,8 +1,13 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {cancelReservation} from "../utils/api";
+import "./reservation.css";
 
-export default function Reservation({reservation, setLoadTrigger}) {
+export default function Reservation({
+  reservation,
+  setLoadTrigger,
+  reservationCardClass,
+}) {
   function cancelHandler(reservation_id) {
     if (
       window.confirm(
@@ -18,36 +23,68 @@ export default function Reservation({reservation, setLoadTrigger}) {
       return () => abortController.abort();
     }
   }
-
+  const background = reservationCardClass(reservation);
   return (
-    <>
-      <h2>
+    <div className="card card-res mb-3">
+      <h5 className="card-title">
         {reservation.first_name}-{reservation.last_name}
-      </h2>
-      <p>Mobile Number: {reservation.mobile_number}</p>
-      <p>Reservation Date: {reservation.reservation_date}</p>
-      <p>Reservation Time: {reservation.reservation_time}</p>
-      <p>People: {reservation.people}</p>
-      <p data-reservation-id-status={reservation.reservation_id}>
-        {reservation.status}
-      </p>
-      {reservation.status === "booked" && (
-        <button>
-          <Link to={`/reservations/${reservation.reservation_id}/seat`}>
-            Seat
-          </Link>
-        </button>
-      )}
-      <button>
-        <a href={`/reservations/${reservation.reservation_id}/edit`}>Edit</a>
-      </button>
+      </h5>
+      <div className="card-body">
+        <ul className="list group list-group-flush">
+          <li className="list-group-item border-top">
+            <p>Mobile Number: </p>
+            <p>{reservation.mobile_number}</p>
+          </li>
+          <li className="list-group-item border-top">
+            <p>Reservation Date: </p>
+            <p>{reservation.reservation_date}</p>
+          </li>
+          <li className="list-group-item border-top">
+            <p>Reservation Time: </p>
+            <p>{reservation.reservation_time}</p>
+          </li>
+          <li className="list-group-item border-top">
+            <p>People: {reservation.people}</p>
+          </li>
+        </ul>
+        <div className={`${background}`}>
+          <p
+            className="text-center text-white"
+            data-reservation-id-status={reservation.reservation_id}
+          >
+            {reservation.status}
+          </p>
+        </div>
+      </div>
 
-      <button
-        data-reservation-id-cancel={reservation.reservation_id}
-        onClick={() => cancelHandler(reservation.reservation_id)}
-      >
-        Cancel
-      </button>
-    </>
+      <div className="btn-group">
+        {reservation.status === "booked" && (
+          <button className="btn btn-primary">
+            <Link
+              className="text-decoration-none text-white"
+              to={`/reservations/${reservation.reservation_id}/seat`}
+            >
+              Seat
+            </Link>
+          </button>
+        )}
+        <button className="btn btn-warning">
+          <a
+            className="text-decoration-none text-white"
+            href={`/reservations/${reservation.reservation_id}/edit`}
+          >
+            Edit
+          </a>
+        </button>
+
+        <button
+          className="btn btn-danger"
+          data-reservation-id-cancel={reservation.reservation_id}
+          onClick={() => cancelHandler(reservation.reservation_id)}
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
   );
 }

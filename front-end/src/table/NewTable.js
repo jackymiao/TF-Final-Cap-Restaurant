@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import {useHistory} from "react-router-dom";
 import {createTable} from "../utils/api";
 
-
 function NewTable({setLoadTrigger}) {
   const history = useHistory();
   const initialData = {
@@ -27,7 +26,7 @@ function NewTable({setLoadTrigger}) {
     event.preventDefault();
     formData.capacity = Number(formData.capacity);
     newTable(formData);
-    setLoadTrigger(prev=>prev+1)
+    setLoadTrigger((prev) => prev + 1);
     setFormData(initialData);
     history.push("/dashboard");
   };
@@ -38,31 +37,41 @@ function NewTable({setLoadTrigger}) {
   return (
     <>
       <form onSubmit={submitHandler}>
-        This form is for new table
-        <label htmlFor="table_name"></label>
-        <input
-          type="text"
-          pattern=".{2,}"
-          id="table_name"
-          name="table_name"
-          placeholder="Table Name"
-          value={formData.table_name}
-          onChange={changeHandler}
-          required
-        ></input>
-        <label htmlFor="capacity"></label>
-        <input
-          type="number"
-          min={1}
-          id="capacity"
-          name="capacity"
-          placeholder="Capacity"
-          value={formData.capacity}
-          onChange={changeHandler}
-          required
-        ></input>
-        <button type="submit">Submit</button>
-        <button onClick={cancelHandler}>Cancel</button>
+        <div className="form-group">
+          <label htmlFor="table_name">Table Name:</label>
+          <input
+            className="form-control"
+            type="text"
+            pattern=".{2,}"
+            id="table_name"
+            name="table_name"
+            placeholder="Table Name"
+            value={formData.table_name}
+            onChange={changeHandler}
+            required
+          ></input>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="capacity">Table Capacity:</label>
+          <input
+            className="form-control"
+            type="number"
+            min={1}
+            id="capacity"
+            name="capacity"
+            placeholder="Capacity"
+            value={formData.capacity}
+            onChange={changeHandler}
+            required
+          ></input>
+        </div>
+        <button className="btn btn-primary me-3" type="submit">
+          Submit
+        </button>
+        <button className="btn btn-primary" onClick={cancelHandler}>
+          Cancel
+        </button>
       </form>
     </>
   );

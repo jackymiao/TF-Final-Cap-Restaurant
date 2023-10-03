@@ -35,70 +35,94 @@ function Form({submitHandler, cancelHandler, formError, initialFormData}) {
     //setFormData(() => initialFormData);
   };
 
-  // const handleCancel = (event) => {
-  //   cancelHandler();
-  // };
-
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="first_name">First Name</label>
-        <input
-          type="text"
-          id="first_name"
-          name="first_name"
-          placeholder="First Name"
-          value={formData.first_name}
-          onChange={changeHandler}
-        ></input>
-        <label htmlFor="last_name">Last Name</label>
-        <input
-          type="text"
-          id="last_name"
-          name="last_name"
-          placeholder="Last Name"
-          value={formData.last_name}
-          onChange={changeHandler}
-        ></input>
-        <label htmlFor="mobile_number">Mobile Number</label>
-        <input
-          type="text"
-          id="mobile_number"
-          name="mobile_number"
-          placeholder="Mobile Number"
-          value={formData.mobile_number}
-          onChange={changeHandler}
-        ></input>
-        <label htmlFor="reservation_date">Reservation Date</label>
-        <input
-          type="date"
-          id="reservation_date"
-          name="reservation_date"
-          placeholder="Reservation Date"
-          value={formData.reservation_date}
-          onChange={changeHandler}
-        ></input>
-        <label htmlFor="reservation_time">Reservation Time</label>
-        <input
-          type="time"
-          id="reservation_time"
-          name="reservation_time"
-          placeholder="Reservation Time"
-          value={formData.reservation_time}
-          onChange={changeHandler}
-        ></input>
-        <label htmlFor="people">People</label>
-        <input
-          type="text"
-          id="people"
-          name="people"
-          placeholder="People"
-          value={formData.people}
-          onChange={changeHandler}
-        ></input>
-        <button type="submit">Submit</button>
+        <div className="form-row">
+          <div className="form-group col-6">
+            <label htmlFor="first_name">First Name: </label>
+            <input
+              className="form-control"
+              type="text"
+              id="first_name"
+              name="first_name"
+              placeholder="First Name"
+              value={formData.first_name}
+              onChange={changeHandler}
+            ></input>
+          </div>
+          <div className="form-group col-6">
+            <label htmlFor="last_name">Last Name:</label>
+            <input
+              className="form-control"
+              type="text"
+              id="last_name"
+              name="last_name"
+              placeholder="Last Name"
+              value={formData.last_name}
+              onChange={changeHandler}
+            ></input>
+          </div>
+
+          <div className="form-group col-6">
+            <label htmlFor="mobile_number">Mobile Number</label>
+            <input
+              className="form-control"
+              type="text"
+              id="mobile_number"
+              name="mobile_number"
+              placeholder="Mobile Number"
+              value={formData.mobile_number}
+              onChange={changeHandler}
+            ></input>
+          </div>
+
+          <div className="form-group col-6">
+            <label htmlFor="reservation_date">Reservation Date</label>
+            <input
+              className="form-control"
+              type="date"
+              id="reservation_date"
+              name="reservation_date"
+              placeholder="Reservation Date"
+              value={formData.reservation_date}
+              onChange={changeHandler}
+            ></input>
+          </div>
+
+          <div className="form-group col-6">
+            <label htmlFor="reservation_time">Reservation Time</label>
+            <input
+              className="form-control"
+              type="time"
+              id="reservation_time"
+              name="reservation_time"
+              placeholder="Reservation Time"
+              value={formData.reservation_time}
+              onChange={changeHandler}
+            ></input>
+          </div>
+
+          <div className="form-group col-6">
+            <label htmlFor="people">People</label>
+            <input
+              className="form-control"
+              type="text"
+              id="people"
+              name="people"
+              placeholder="People"
+              value={formData.people}
+              onChange={changeHandler}
+            ></input>
+          </div>
+        </div>
+
+        <button className="btn btn-primary me-4" type="submit">
+          Submit
+        </button>
 
         <button
+          className="btn btn-primary"
           data-reservation-id-cancel={formData.reservation_id}
           onClick={cancelHandler}
         >

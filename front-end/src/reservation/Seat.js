@@ -43,22 +43,34 @@ export default function Seat({date, setLoadTrigger}) {
 
   return (
     <>
-      <h2>This is page for seat</h2>
+      <h2>Seat the Reservation</h2>
       <h3>Select a table for this Reservation {reservation_id}</h3>
       <form onSubmit={submitHandler}>
-        <select name="table_id" value={selectedTable} onChange={changeHandler}>
-          <option value="" disabled>
-            Select a table
-          </option>
-          {tables &&
-            tables.map((t) => (
-              <option key={t.table_id} value={t.table_id}>
-                {t.table_name} - {t.capacity}
-              </option>
-            ))}
-        </select>
-        <button type="submit">Submit</button>
-        <button onClick={cancelHandler}>Cancel</button>
+        <div className="form-group">
+          <select
+            className="form-control"
+            name="table_id"
+            value={selectedTable}
+            onChange={changeHandler}
+          >
+            <option value="" disabled>
+              Select a table
+            </option>
+            {tables &&
+              tables.map((t) => (
+                <option key={t.table_id} value={t.table_id}>
+                  {t.table_name} - {t.capacity}
+                </option>
+              ))}
+          </select>
+        </div>
+
+        <button className="btn btn-primary me-3" type="submit">
+          Submit
+        </button>
+        <button className="btn btn-primary" onClick={cancelHandler}>
+          Cancel
+        </button>
       </form>
       {/* error is the variable name to pass and receive */}
       <ErrorAlert error={seatError} />

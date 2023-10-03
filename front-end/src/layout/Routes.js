@@ -39,22 +39,6 @@ function Routes() {
 
   const [tablesError, setTablesError] = useState(null);
 
-  // useEffect(() => {
-  //   console.log("loadTrigger changed: ", loadTrigger)
-  //   async function loadDashboard() {
-  //    // const abortController = new AbortController();
-  //     setReservationsError(null);
-  //     await listReservations({date}, abortController.signal)
-  //       .then(setReservations)
-  //       .catch(setReservationsError);
-  //     await listTables(abortController.signal)
-  //       .then(setTables)
-  //       .catch(setTablesError);
-  //     //return () => abortController.abort();
-  //   }
-  //   loadDashboard();
-
-  // }, [loadTrigger, date]);
   useEffect(() => {
     async function loadDashboard() {
       const abortController = new AbortController();
