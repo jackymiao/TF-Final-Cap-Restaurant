@@ -12,6 +12,13 @@ export default function Search() {
     search(formData).then(setResult);
   };
 
+  function reservationCardClass(reservation) {
+    if (reservation.status === "booked") {
+      return "bg-warning";
+    } else {
+      return "bg-success";
+    }
+  }
   return (
     <>
       <form onSubmit={submitHandler}>
@@ -27,16 +34,18 @@ export default function Search() {
             onChange={changeHandler}
           />
         </div>
-        <button className="btn btn-primary" type="submit">
+        <button className="btn btn-primary mb-4" type="submit">
           Find
         </button>
       </form>
-      <div>
+      <div className="d-flex flex-wrap">
         {result.length > 0 ? (
           result.map((r) => (
-            <div key={r.reservation_id}>
-              {" "}
-              <Reservation reservation={r} />{" "}
+            <div key={r.reservation_id} className="me-3">
+              <Reservation
+                reservation={r}
+                reservationCardClass={reservationCardClass}
+              />
             </div>
           ))
         ) : (

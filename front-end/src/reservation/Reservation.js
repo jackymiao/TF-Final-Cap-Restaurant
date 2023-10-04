@@ -59,7 +59,7 @@ export default function Reservation({
 
       <div className="btn-group">
         {reservation.status === "booked" && (
-          <button className="btn btn-primary">
+          <button className="btn btn-primary rounded me-2">
             <Link
               className="text-decoration-none text-white"
               to={`/reservations/${reservation.reservation_id}/seat`}
@@ -68,7 +68,7 @@ export default function Reservation({
             </Link>
           </button>
         )}
-        <button className="btn btn-warning">
+        <button className="btn btn-warning rounded me-2">
           <a
             className="text-decoration-none text-white"
             href={`/reservations/${reservation.reservation_id}/edit`}
@@ -78,7 +78,7 @@ export default function Reservation({
         </button>
 
         <button
-          className="btn btn-danger"
+          className="btn btn-danger rounded"
           data-reservation-id-cancel={reservation.reservation_id}
           onClick={() => cancelHandler(reservation.reservation_id)}
         >
