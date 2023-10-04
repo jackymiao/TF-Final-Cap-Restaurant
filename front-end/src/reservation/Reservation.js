@@ -25,65 +25,66 @@ export default function Reservation({
   }
   const background = reservationCardClass(reservation);
   return (
-    <div className="card card-res mb-3">
-      <h5 className="card-title">
-        {reservation.first_name}-{reservation.last_name}
-      </h5>
-      <div className="card-body">
-        <ul className="list group list-group-flush">
-          <li className="list-group-item border-top">
-            <p>Mobile Number: </p>
-            <p>{reservation.mobile_number}</p>
-          </li>
-          <li className="list-group-item border-top">
-            <p>Reservation Date: </p>
-            <p>{reservation.reservation_date}</p>
-          </li>
-          <li className="list-group-item border-top">
-            <p>Reservation Time: </p>
-            <p>{reservation.reservation_time}</p>
-          </li>
-          <li className="list-group-item border-top">
-            <p>People: {reservation.people}</p>
-          </li>
-        </ul>
-        <div className={`${background}`}>
-          <p
-            className="text-center text-white"
-            data-reservation-id-status={reservation.reservation_id}
+    <div>
+      {reservation.status === "booked" && (
+        <button className="button me-2">
+          <Link
+            className="text-decoration-none text"
+            to={`/reservations/${reservation.reservation_id}/seat`}
           >
-            {reservation.status}
-          </p>
-        </div>
-      </div>
-
-      <div className="btn-group">
-        {reservation.status === "booked" && (
-          <button className="btn btn-primary rounded me-2">
-            <Link
-              className="text-decoration-none text-white"
-              to={`/reservations/${reservation.reservation_id}/seat`}
+            Seat
+          </Link>
+        </button>
+      )}
+      <div className="card-res mb-3">
+        <div className="d-flex justify-content-between align-items-center px-2">
+          <h5 className="text mb-0 text-name">
+            {reservation.last_name} {reservation.first_name}
+          </h5>
+          <div className={`${background} rounded m-2`}>
+            <p
+              className="text-center text-white m-0 px-3"
+              data-reservation-id-status={reservation.reservation_id}
             >
-              Seat
-            </Link>
-          </button>
-        )}
-        <button className="btn btn-warning rounded me-2">
-          <a
-            className="text-decoration-none text-white"
-            href={`/reservations/${reservation.reservation_id}/edit`}
-          >
-            Edit
-          </a>
-        </button>
+              {reservation.status}
+            </p>
+          </div>
+        </div>
 
-        <button
-          className="btn btn-danger rounded"
-          data-reservation-id-cancel={reservation.reservation_id}
-          onClick={() => cancelHandler(reservation.reservation_id)}
-        >
-          Cancel
-        </button>
+        <div className="">
+          <ul className="list group list-group-flush">
+            <li className="list-group-item border-top">
+              <p className="card-text my-0">Mobile Number: </p>
+              <p className="card-text my-0">{reservation.mobile_number}</p>
+            </li>
+            <li className="list-group-item border-top">
+              <p className="card-text my-0">Reservation Time: </p>
+              <p className="card-text my-0">{reservation.reservation_time}</p>
+            </li>
+            <li className="list-group-item border-top">
+              <p className="card-text my-0">People: {reservation.people}</p>
+            </li>
+          </ul>
+        </div>
+
+        <div className="d-flex justify-content-around mx-2">
+          <button className="me-2 button">
+            <a
+              className="text-decoration-none text"
+              href={`/reservations/${reservation.reservation_id}/edit`}
+            >
+              Edit
+            </a>
+          </button>
+
+          <button
+            className="text button"
+            data-reservation-id-cancel={reservation.reservation_id}
+            onClick={() => cancelHandler(reservation.reservation_id)}
+          >
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   );

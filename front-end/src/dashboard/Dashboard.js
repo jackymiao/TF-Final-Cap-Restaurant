@@ -5,6 +5,7 @@ import {previous, next} from "../utils/date-time";
 import Reservation from "../reservation/Reservation";
 import {finishTable} from "../utils/api";
 import Table from "../table/Table";
+import "./dashboard.css";
 /**
  * Defines the dashboard page.
  * @param date
@@ -51,24 +52,26 @@ function Dashboard({
   }
 
   return (
-    <main className="">
+    <main className="dashboard">
       <h1>Dashboard</h1>
-      <div className="d-md-flex mb-3">
-        <h4 className="mb-0">Reservations for date {date}</h4>
+      <div className="mb-3">
+        <div className="row">
+          <h4 className="mb-0 col-6">Reservations Date is {date}</h4>
+          <button className="col-1 button me-3" onClick={previousHandler}>
+            Previous
+          </button>
+          <button className="col-1 button" onClick={nextHandler}>
+            Next
+          </button>
+        </div>
       </div>
       <div className="container">
         <div className="row">
           <div className="col-8 ">
-            <h2>Reservations</h2>
-            <button className="btn btn-primary m-2" onClick={previousHandler}>
-              Previous
-            </button>
-            <button className="btn btn-primary" onClick={nextHandler}>
-              Next
-            </button>
+            <h2 className="text-center">Reservations</h2>
             <ErrorAlert error={reservationsError} />
             <div className="d-flex justify-content-between flex-wrap">
-              {reservations &&
+              {reservations.length > 0 ? (
                 reservations.map((r) => (
                   <React.Fragment key={r.reservation_id}>
                     {(r.status === "booked" || r.status === "seated") && (
@@ -79,17 +82,22 @@ function Dashboard({
                       />
                     )}
                   </React.Fragment>
-                ))}
+                ))
+              ) : (
+                <h3>There is no reservation.</h3>
+              )}
             </div>
           </div>
           <div className="col-4">
-            <h3>Tables</h3>
+            <h3 className="text-center">Tables</h3>
             <ErrorAlert error={tablesError} />
 
-            {tables &&
-              tables.map((t) => (
-                <Table key={t.table_id} t={t} finishHandler={finishHandler} />
-              ))}
+            <div className="d-flex flex-column">
+              {tables &&
+                tables.map((t) => (
+                  <Table key={t.table_id} t={t} finishHandler={finishHandler} />
+                ))}
+            </div>
           </div>
         </div>
       </div>

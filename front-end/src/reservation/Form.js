@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 
 import ErrorAlert from "../layout/ErrorAlert";
+import "./form.css";
 
 function Form({submitHandler, cancelHandler, formError, initialFormData}) {
   //test file need it clear after submition, even it is invalid
@@ -117,12 +118,12 @@ function Form({submitHandler, cancelHandler, formError, initialFormData}) {
           </div>
         </div>
 
-        <button className="btn btn-primary me-4" type="submit">
+        <button className="button button-form me-4" type="submit">
           Submit
         </button>
 
         <button
-          className="btn btn-primary"
+          className="button button-form"
           data-reservation-id-cancel={formData.reservation_id}
           onClick={cancelHandler}
         >

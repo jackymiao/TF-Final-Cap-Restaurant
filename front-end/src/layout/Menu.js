@@ -1,7 +1,7 @@
 import React from "react";
 
-import { Link } from "react-router-dom";
-
+import {Link} from "react-router-dom";
+import "./menu.css";
 /**
  * Defines the menu for this application.
  *
@@ -17,33 +17,33 @@ function Menu() {
           to="/"
         >
           <div className="sidebar-brand-text mx-3">
-            <span>Periodic Tables</span>
+            <span className="nav-text font-weight-bold">MY Best Seafood</span>
           </div>
         </Link>
         <hr className="sidebar-divider my-0" />
         <ul className="nav navbar-nav text-light" id="accordionSidebar">
           <li className="nav-item">
             <Link className="nav-link" to="/dashboard">
-              <span className="oi oi-dashboard" />
-              &nbsp;Dashboard
+              <span className="oi oi-dashboard nav-text" />
+              &nbsp;<span className="nav-text">Dashboard</span>
             </Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/search">
-              <span className="oi oi-magnifying-glass" />
-              &nbsp;Search
+              <span className="oi oi-magnifying-glass nav-text" />
+              &nbsp;<span className="nav-text">Search</span>
             </Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/reservations/new">
-              <span className="oi oi-plus" />
-              &nbsp;New Reservation
+              <span className="oi oi-plus nav-text" />
+              &nbsp;<span className="nav-text">New Reservation</span>
             </Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/tables/new">
-              <span className="oi oi-layers" />
-              &nbsp;New Table
+              <span className="oi oi-layers nav-text" />
+              &nbsp;<span className="nav-text">New Table</span>
             </Link>
           </li>
         </ul>

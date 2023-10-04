@@ -1,3 +1,23 @@
 .card-res {
   width: 200px;
+  background-color: #fafafa;
+  height: 200px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-text {
+  font-size: 0.8em;
+}
+.button {
+  width: 100%;
+}
+
+.text {
+  color: #5a4636;
+}
+
+.text-name {
+  font-size: 1em;
 }

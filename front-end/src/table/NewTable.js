@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {useHistory} from "react-router-dom";
 import {createTable} from "../utils/api";
-
+import "./table.css";
 function NewTable({setLoadTrigger}) {
   const history = useHistory();
   const initialData = {
@@ -66,12 +66,14 @@ function NewTable({setLoadTrigger}) {
             required
           ></input>
         </div>
-        <button className="btn btn-primary me-3" type="submit">
-          Submit
-        </button>
-        <button className="btn btn-primary" onClick={cancelHandler}>
-          Cancel
-        </button>
+        <div className="d-flex">
+          <button className="button button-newtable me-3" type="submit">
+            Submit
+          </button>
+          <button className="button button-newtable" onClick={cancelHandler}>
+            Cancel
+          </button>
+        </div>
       </form>
     </>
   );

@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import {search} from "../utils/api";
 import Reservation from "../reservation/Reservation";
+import "./search.css";
+
 export default function Search() {
   const [formData, setFormData] = useState("");
   const [result, setResult] = useState([]);
@@ -34,7 +36,7 @@ export default function Search() {
             onChange={changeHandler}
           />
         </div>
-        <button className="btn btn-primary mb-4" type="submit">
+        <button className="button button-search mb-4" type="submit">
           Find
         </button>
       </form>
