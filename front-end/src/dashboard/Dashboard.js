@@ -57,10 +57,10 @@ function Dashboard({
       <div className="mb-3">
         <div className="row">
           <h4 className="mb-0 col-6">Reservations Date is {date}</h4>
-          <button className="col-1 button me-3" onClick={previousHandler}>
+          <button className="col-1 btn-head me-3" onClick={previousHandler}>
             Previous
           </button>
-          <button className="col-1 button" onClick={nextHandler}>
+          <button className="col-1 btn-head" onClick={nextHandler}>
             Next
           </button>
         </div>
