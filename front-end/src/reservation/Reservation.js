@@ -27,7 +27,7 @@ export default function Reservation({
   return (
     <div>
       {reservation.status === "booked" && (
-        <button className="button me-2">
+        <button className="button me-4">
           <Link
             className="text-decoration-none text"
             to={`/reservations/${reservation.reservation_id}/seat`}

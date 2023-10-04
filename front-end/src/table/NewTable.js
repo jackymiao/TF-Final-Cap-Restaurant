@@ -36,6 +36,7 @@ function NewTable({setLoadTrigger}) {
   //use pattern and min for input to limit the input length and number
   return (
     <>
+      <h1 className="m-4">Create a New Table</h1>
       <form onSubmit={submitHandler}>
         <div className="form-group">
           <label htmlFor="table_name">Table Name:</label>
@@ -66,13 +67,18 @@ function NewTable({setLoadTrigger}) {
             required
           ></input>
         </div>
-        <div className="d-flex">
-          <button className="button button-newtable me-3" type="submit">
-            Submit
-          </button>
-          <button className="button button-newtable" onClick={cancelHandler}>
-            Cancel
-          </button>
+
+        <div className="row justify-content-around">
+          <div className="col-lg-5 col-sm-6 mb-4">
+            <button className="button button-newtable me-3" type="submit">
+              Submit
+            </button>
+          </div>
+          <div className="col-lg-5 col-sm-6">
+            <button className="button button-newtable" onClick={cancelHandler}>
+              Cancel
+            </button>
+          </div>
         </div>
       </form>
     </>

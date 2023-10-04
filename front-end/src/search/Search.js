@@ -24,11 +24,11 @@ export default function Search() {
   return (
     <>
       <form onSubmit={submitHandler}>
-        <h2>Find Reservation</h2>
+        <h1 className="m-4">Find Reservation</h1>
         <div className="form-group">
           <label htmlFor="mobile_number">Search by Phone Number</label>
           <input
-            className="form-control"
+            className="form-control search-input"
             type="text"
             id="mobile_number"
             name="mobile_number"

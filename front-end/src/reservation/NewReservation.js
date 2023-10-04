@@ -36,7 +36,7 @@ function NewReservation({setDate, setLoadTrigger}) {
 
   return (
     <>
-      <h1>This is new Reservation</h1>
+      <h1 className="m-4">Create a New Reservation</h1>
       <Form
         submitHandler={submitHandler}
         cancelHandler={cancelHandler}

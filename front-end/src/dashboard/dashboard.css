@@ -9,9 +9,23 @@
   border-radius: 20px;
 }
 
-.btn-head {
+.btn-header {
   background-color: #ff6b6b;
   border: none;
   color: #5a4636;
   border-radius: 20px;
+  font-size: 1vw;
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .btn-header {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 425px) {
+  .btn-header {
+    width: 80%;
+  }
 }

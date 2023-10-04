@@ -21,6 +21,22 @@ function Form({submitHandler, cancelHandler, formError, initialFormData}) {
           ...formData,
           people: Number(event.target.value),
         });
+      } else if (event.target.name === "mobile_number") {
+        let phonenumber = event.target.value.replace(/\D/g, ""); // Remove all non-digits
+        if (phonenumber.length > 3 && phonenumber.length <= 6) {
+          phonenumber = phonenumber.slice(0, 3) + "-" + phonenumber.slice(3);
+        } else if (phonenumber.length > 6) {
+          phonenumber =
+            phonenumber.slice(0, 3) +
+            "-" +
+            phonenumber.slice(3, 6) +
+            "-" +
+            phonenumber.slice(6, 10);
+        }
+        setFormData({
+          ...formData,
+          mobile_number: phonenumber,
+        });
       } else {
         setFormData({
           ...formData,
@@ -69,10 +85,11 @@ function Form({submitHandler, cancelHandler, formError, initialFormData}) {
             <label htmlFor="mobile_number">Mobile Number</label>
             <input
               className="form-control"
-              type="text"
+              type="tel"
               id="mobile_number"
               name="mobile_number"
-              placeholder="Mobile Number"
+              placeholder="XXX-XXX-XXXX"
+              pattern="^\d{3}-\d{3}-\d{4}$"
               value={formData.mobile_number}
               onChange={changeHandler}
             ></input>
@@ -118,17 +135,22 @@ function Form({submitHandler, cancelHandler, formError, initialFormData}) {
           </div>
         </div>
 
-        <button className="button button-form me-4" type="submit">
-          Submit
-        </button>
-
-        <button
-          className="button button-form"
-          data-reservation-id-cancel={formData.reservation_id}
-          onClick={cancelHandler}
-        >
-          Cancel
-        </button>
+        <div className="row justify-content-around">
+          <div className="col-lg-3 col-sm-5 mb-4">
+            <button className="button button-form" type="submit">
+              Submit
+            </button>
+          </div>
+          <div className="col-lg-3 col-sm-5">
+            <button
+              className="button button-form "
+              data-reservation-id-cancel={formData.reservation_id}
+              onClick={cancelHandler}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
       </form>
       <ErrorAlert error={formError} />
     </>

@@ -53,24 +53,30 @@ function Dashboard({
 
   return (
     <main className="dashboard">
-      <h1>Dashboard</h1>
-      <div className="mb-3">
+      {/* <h1>Dashboard</h1> */}
+      <div className="mb-3 mt-4">
         <div className="row">
-          <h4 className="mb-0 col-6">Reservations Date is {date}</h4>
-          <button className="col-1 btn-head me-3" onClick={previousHandler}>
-            Previous
-          </button>
-          <button className="col-1 btn-head" onClick={nextHandler}>
-            Next
-          </button>
+          <h4 className="mb-0 col-lg-6 col-md-12 col-sm-12">
+            Reservations Date is {date}
+          </h4>
+          <div className="col-lg-2 col-md-3 col-sm-12 me-3 btn-h-box">
+            <button className=" btn-header " onClick={previousHandler}>
+              Previous
+            </button>
+          </div>
+          <div className="col-lg-2 col-md-3 col-sm-12 btn-h-box">
+            <button className="btn-header" onClick={nextHandler}>
+              Next
+            </button>
+          </div>
         </div>
       </div>
       <div className="container">
         <div className="row">
-          <div className="col-8 ">
+          <div className="col-lg-8 col-md-12">
             <h2 className="text-center">Reservations</h2>
             <ErrorAlert error={reservationsError} />
-            <div className="d-flex justify-content-between flex-wrap">
+            <div className="d-flex justify-content-around flex-wrap">
               {reservations.length > 0 ? (
                 reservations.map((r) => (
                   <React.Fragment key={r.reservation_id}>
@@ -88,11 +94,11 @@ function Dashboard({
               )}
             </div>
           </div>
-          <div className="col-4">
+          <div className="col-lg-4 col-md-12 d-flex flex-column align-items-center">
             <h3 className="text-center">Tables</h3>
             <ErrorAlert error={tablesError} />
 
-            <div className="d-flex flex-column">
+            <div className="d-flex flex-column w-75">
               {tables &&
                 tables.map((t) => (
                   <Table key={t.table_id} t={t} finishHandler={finishHandler} />
