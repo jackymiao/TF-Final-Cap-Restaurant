@@ -35,7 +35,7 @@ function NewReservation({setDate, setLoadTrigger}) {
   }
 
   return (
-    <>
+    <div className="container-reservation">
       <h1 className="m-4">Create a New Reservation</h1>
       <Form
         submitHandler={submitHandler}
@@ -43,7 +43,7 @@ function NewReservation({setDate, setLoadTrigger}) {
         formError={formError}
         initialFormData={initialData}
       />
-    </>
+    </div>
   );
 }
 

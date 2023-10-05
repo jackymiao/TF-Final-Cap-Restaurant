@@ -35,7 +35,7 @@ function NewTable({setLoadTrigger}) {
   };
   //use pattern and min for input to limit the input length and number
   return (
-    <>
+    <div className="container-table">
       <h1 className="m-4">Create a New Table</h1>
       <form onSubmit={submitHandler}>
         <div className="form-group">
@@ -81,7 +81,7 @@ function NewTable({setLoadTrigger}) {
           </div>
         </div>
       </form>
-    </>
+    </div>
   );
 }
 

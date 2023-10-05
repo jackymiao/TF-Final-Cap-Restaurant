@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import {useParams, useHistory} from "react-router-dom";
 import {seatReservation, listTables} from "../utils/api";
 import ErrorAlert from "../layout/ErrorAlert";
+import "./seat.css";
 
 export default function Seat({date, setLoadTrigger}) {
   const history = useHistory();
@@ -48,7 +49,7 @@ export default function Seat({date, setLoadTrigger}) {
       <form onSubmit={submitHandler}>
         <div className="form-group">
           <select
-            className="form-control"
+            className="form-control w-75"
             name="table_id"
             value={selectedTable}
             onChange={changeHandler}
@@ -65,12 +66,18 @@ export default function Seat({date, setLoadTrigger}) {
           </select>
         </div>
 
-        <button className="btn btn-primary me-3" type="submit">
-          Submit
-        </button>
-        <button className="btn btn-primary" onClick={cancelHandler}>
-          Cancel
-        </button>
+        <div className="row">
+          <div className="col-lg-5 col-sm-12 mb-4">
+            <button className="button me-3 btn-seat" type="submit">
+              Submit
+            </button>
+          </div>
+          <div className="col-lg-5 col-sm-12">
+            <button className="button btn-seat" onClick={cancelHandler}>
+              Cancel
+            </button>
+          </div>
+        </div>
       </form>
       {/* error is the variable name to pass and receive */}
       <ErrorAlert error={seatError} />

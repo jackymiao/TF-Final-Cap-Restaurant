@@ -18,6 +18,16 @@
   width: 100%;
 }
 
+.button:hover {
+  background-color: #daa03d;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+}
+.button:active {
+  transform: translateY(0px);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
 @media (max-width: 1024px) {
   .btn-header {
     font-size: 12px;

@@ -6,3 +6,9 @@
 .main-page {
   background-color: #f5e0b7;
 }
+
+@media (max-width: 425px) {
+  .side-bar {
+    height: 230px;
+  }
+}

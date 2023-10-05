@@ -60,12 +60,12 @@ function Dashboard({
             Reservations Date is {date}
           </h4>
           <div className="col-lg-2 col-md-3 col-sm-12 me-3 btn-h-box">
-            <button className=" btn-header " onClick={previousHandler}>
+            <button className="button btn-header " onClick={previousHandler}>
               Previous
             </button>
           </div>
           <div className="col-lg-2 col-md-3 col-sm-12 btn-h-box">
-            <button className="btn-header" onClick={nextHandler}>
+            <button className="button btn-header" onClick={nextHandler}>
               Next
             </button>
           </div>

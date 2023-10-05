@@ -18,6 +18,16 @@
   color: #5a4636;
 }
 
+.text:hover {
+  color: #5a4636;
+}
+
 .text-name {
   font-size: 1em;
+}
+
+@media (max-width: 425px) {
+  .container-reservation {
+    height: 200vw;
+  }
 }

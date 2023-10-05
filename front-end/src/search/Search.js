@@ -22,9 +22,9 @@ export default function Search() {
     }
   }
   return (
-    <>
+    <div className="container-search">
       <form onSubmit={submitHandler}>
-        <h1 className="m-4">Find Reservation</h1>
+        <h1 className="p-4">Find Reservation</h1>
         <div className="form-group">
           <label htmlFor="mobile_number">Search by Phone Number</label>
           <input
@@ -54,6 +54,6 @@ export default function Search() {
           <p>No reservations found</p>
         )}
       </div>
-    </>
+    </div>
   );
 }

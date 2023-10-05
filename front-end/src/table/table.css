@@ -10,3 +10,9 @@
 .button-newtable {
   width: 50%;
 }
+
+@media (max-width: 425px) {
+  .container-table {
+    height: 200vw;
+  }
+}
