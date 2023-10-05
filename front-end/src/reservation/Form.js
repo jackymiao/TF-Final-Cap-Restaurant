@@ -10,10 +10,33 @@ function Form({submitHandler, cancelHandler, formError, initialFormData}) {
   const changeHandler = (event) => {
     if (formData.status) {
       if (formData.status === "booked") {
-        setFormData((prevData) => ({
-          ...prevData,
-          [event.target.name]: event.target.value,
-        }));
+        if (event.target.name === "people") {
+          setFormData({
+            ...formData,
+            people: Number(event.target.value),
+          });
+        } else if (event.target.name === "mobile_number") {
+          let phonenumber = event.target.value.replace(/\D/g, ""); // Remove all non-digits
+          if (phonenumber.length > 3 && phonenumber.length <= 6) {
+            phonenumber = phonenumber.slice(0, 3) + "-" + phonenumber.slice(3);
+          } else if (phonenumber.length > 6) {
+            phonenumber =
+              phonenumber.slice(0, 3) +
+              "-" +
+              phonenumber.slice(3, 6) +
+              "-" +
+              phonenumber.slice(6, 10);
+          }
+          setFormData({
+            ...formData,
+            mobile_number: phonenumber,
+          });
+        } else {
+          setFormData((prevData) => ({
+            ...prevData,
+            [event.target.name]: event.target.value,
+          }));
+        }
       }
     } else {
       if (event.target.name === "people") {
